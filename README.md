@@ -39,6 +39,31 @@ If you're getting an HTTP error, make sure you're running the exact same code as
 
 You probably need to install the SSL certificates (see this [StackOverflow question](https://stackoverflow.com/questions/27835619/urllib-and-ssl-certificate-verify-failed-error)). If you downloaded Python from the official website, then run `/Applications/Python\ 3.12/Install\ Certificates.command` in a terminal (change `3.12` to whatever version you installed). If you installed Python using MacPorts, run `sudo port install curl-ca-bundle` in a terminal.
 
+**I'm getting an HTTP error (e.g. 504 Gateway Time-out) when calling `fetch_openml('mnist_784')`**
+
+OpenML servers occasionally experience temporary downtime, rate limits, or high latency. You can:
+1. Wait a few minutes and try again. Once downloaded, Scikit-Learn caches the dataset in `~/scikit_learn_data/`.
+2. Or download the dataset directly using `urllib` and `numpy`:
+
+```python
+from pathlib import Path
+import urllib.request
+import numpy as np
+from sklearn.utils import Bunch
+
+path = Path("datasets/mnist.npz")
+if not path.is_file():
+    Path("datasets").mkdir(parents=True, exist_ok=True)
+    url = "https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz"
+    urllib.request.urlretrieve(url, path)
+
+with np.load(path) as f:
+    X = np.concatenate([f["x_train"], f["x_test"]]).reshape(-1, 784)
+    y = np.concatenate([f["y_train"], f["y_test"]]).astype(str)
+
+mnist = Bunch(data=X, target=y, DESCR="MNIST dataset", details={}, url=url)
+```
+
 **I've installed this project locally. How do I update it to the latest version?**
 
 See [INSTALL.md](INSTALL.md)
