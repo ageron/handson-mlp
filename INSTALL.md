@@ -86,7 +86,7 @@ You may also want to install the Box2D library, which is needed for a couple of 
 cd
 cd handson-mlp
 source .venv/bin/activate  # on Windows, replace with same command as in step 2
-uv add box2d
+uv sync --extra box2d
 ```
 
 This should work on most platforms. However, if you get an error, then it most likely means that the binary for your platform is not available, so you must build this library from the source code. For this, you first need to ensure that you have the essential tools for building a C++ project. For example, on Debian and Ubuntu you can open a terminal and run:
@@ -104,6 +104,16 @@ source .venv/bin/activate  # on Windows, replace with same command as in step 2
 uv add swig
 uv add box2d-py
 ```
+
+For Appendix B, `uv sync --extra quantization` installs `bitsandbytes` and
+`gguf`. Availability of quantization features depends on your hardware and
+platform. For Chapter 19's legacy Anaconda Atari setup,
+`uv sync --extra legacy-atari` installs `AutoROM`. These extras are optional; you can combine
+them by passing multiple `--extra` options.
+
+Appendix E's `causal-conv1d` and `mamba-ssm` packages still require the manual
+CUDA installation described in that notebook. Its prebuilt `cp312` wheels
+are specific to Python 3.12 and cannot be used with Python 3.13.
 
 ## Update this project and its libraries
 

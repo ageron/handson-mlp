@@ -7,70 +7,70 @@ authors = [
 ]
 license = { text = "Apache-2.0" }
 readme = "README.md"
-requires-python = ">=3.11,<3.13"
+requires-python = ">=3.11,<3.14"
 
 dependencies = [
     # Core scientific stack
-    "matplotlib>=3.10.6,<4.0.0",
+    "matplotlib>=3.10.0,<4.0.0",
     "numexpr>=2.13.1,<3.0.0",
-    "numpy>=2.3.3,<3.0.0",
-    "pandas>=2.3.3,<3.0.0",
+    "numpy>=2.1.3,<3.0.0",
+    "pandas>=2.2.3,<3.0.0",
     "scipy>=1.16.2,<2.0.0",
-
     # Jupyter environment
     "jupyter>=1.1.1,<2.0.0",
     "jupyterlab>=4.4.9,<5.0.0",
     "nbdime>=4.0.2,<5.0.0",
-    "widgetsnbextension>=4.0.14,<5.0.0",
-
+    "widgetsnbextension>=3.6.10,<5.0.0",
     # Machine Learning
-    "optuna>=4.5.0,<5.0.0",
-    "scikit-learn>=1.7.2,<2.0.0",
-    "statsmodels>=0.14.5,<0.15.0",
+    "optuna>=4.5.0,<6.0.0",
+    "scikit-learn>=1.6.1,<2.0.0",
+    "statsmodels>=0.14.5,<0.16.0",
     "xgboost>=3.0.5,<4.0.0",
-
     # Deep Learning core
     "accelerate>=1.10.1,<2.0.0",
     "torch>=2.8.0,<3.0.0",
     "torchaudio>=2.8.0,<3.0.0",
     "torchmetrics>=1.8.2,<2.0.0",
-    "torchvision>=0.23.0,<0.24.0",
-
+    "torchvision>=0.23.0,<0.27.0",
     # NLP & Transformers
     "datasets>=4.1.1,<5.0.0",
     "einops>=0.8.1",
-    "nltk>=3.9.2,<4.0.0",
-    "peft>=0.17.1,<0.18.0",
+    "nltk>=3.9.1,<4.0.0",
+    "peft>=0.17.1,<0.22.0",
     "sentence-transformers>=5.1.1,<6.0.0",
     "sentencepiece>=0.2.1,<0.3.0",
-    "transformers>=4.57.0,<5.0.0",
-    "trl>=0.23.1,<0.24.0",
-
+    "transformers>=4.57.0,<6.0.0",
+    "trl>=0.23.1,<2.0.0",
     # Reinforcement Learning
     "ale-py>=0.11.2",
     "gymnasium[atari]>=1.2.1,<2.0.0",
     "pygame>=2.6.1,<3.0.0",
     "stable-baselines3>=2.7.0,<3.0.0",
-
     # Computer Vision & Generation
-    "diffusers>=0.35.1,<0.36.0",
+    "diffusers>=0.35.1,<0.41.0",
     "lion-pytorch>=0.2.3,<0.3.0",
     "ultralytics>=8.3.206,<9.0.0",
-
     # Other utilities & APIs
-    "google-genai>=1.41.0,<2.0.0",
+    "google-genai>=1.41.0,<3.0.0",
     "graphviz>=0.21,<0.22",
     "joblib>=1.5.2,<2.0.0",
     "onnx>=1.19.0,<2.0.0",
     "pillow>=11.3.0,<12.0.0",
-    "requests>=2.32.5,<3.0.0",
+    "requests>=2.32.4,<3.0.0",
     "tensorboard>=2.20.0,<3.0.0",
     "tqdm>=4.67.1,<5.0.0",
     "urlextract>=1.9.0,<2.0.0",
     "soundfile>=0.13.1",
+    "pytorch-optimizer>=3.10.1",
 ]
 
 [project.optional-dependencies]
+box2d = ["Box2D>=2.3.10,<3.0.0"]
+quantization = [
+    "bitsandbytes>=0.50.2,<1.0.0",
+    "gguf>=0.19.0,<1.0.0",
+]
+legacy-atari = ["AutoROM>=0.6.1,<1.0.0"]
 dev = [
     "black[jupyter]>=25.11.0,<26.0.0",
     "flake8>=7.3.0,<8.0.0",
