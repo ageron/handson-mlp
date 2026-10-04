@@ -5,6 +5,7 @@ The goal of this project is to teach you the fundamentals of Machine Learning in
 <a href="https://homl.info/er"><img src="https://www.oreilly.com/covers/urn:orm:book:9798341607972/400w/" title="book" width="150" border="0" /></a>
 
 **Note**: If you are looking for the notebooks for the TensorFlow/Keras version of this book, check out [ageron/handson-ml3](https://github.com/ageron/handson-ml3).
+**Note**: If you prefer [Polars](https://pola.rs/) over Pandas, check out [PGupta-Git/handson-mlp (polars branch)](https://github.com/PGupta-Git/handson-mlp/tree/polars_integration), a community-maintained Polars version of this project (see [#23](https://github.com/ageron/handson-mlp/issues/23)).
 
 ## Quick Start
 
