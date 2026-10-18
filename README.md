@@ -29,7 +29,7 @@ Check out the [installation instructions](INSTALL.md).
 
 **Which Python version should I use?**
 
-I recommend Python 3.12. If you follow the installation instructions above, that's the version you will get. Versions 3.10 and 3.11 should work as well, but some libraries are not yet available for 3.13.
+I recommend Python 3.12. The project metadata supports Python 3.11 through 3.13 (`>=3.11,<3.14`).
 
 **I'm getting an error when I call `load_housing_data()`**
 
