@@ -36,7 +36,13 @@ cd handson-mlp
 docker build -t ageron/handson-mlp:cpu -f docker/Dockerfile --build-arg PT_VARIANT=cpu .
 ```
 
-If you want to build the Nvidia CUDA 12.6 variant, replace `cpu` with `cu126`. In the commands below, I'll use `cpu`, but you can replace `cpu` with the appropriate variant for your hardware.
+The build uses the checkout's `.python-version` and frozen lockfile without adding or removing project dependencies. Box2D is optional. To include Chapter 19's Box2D exercises, build with the declared `box2d` extra:
+
+```bash
+docker build -t ageron/handson-mlp:cpu-box2d -f docker/Dockerfile --build-arg PT_VARIANT=cpu --build-arg WITH_BOX2D=true .
+```
+
+If you want to build the Nvidia CUDA 12.6 variant, replace `cpu` with `cu126`. The CUDA installation keeps the PyTorch compatibility bounds declared in `pyproject.toml` while selecting backend-specific wheels. In the commands below, I'll use `cpu`, but you can replace `cpu` with the appropriate variant for your hardware.
 
 > NOTE: You can see the list of available variants by visiting [PyTorch's download page](https://pytorch.org/get-started/locally/) and selecting Linux (even if you are on Windows or MacOS).
 
@@ -64,6 +70,8 @@ cd  # go to the folder containing the handson-mlp directory
 cd handson-mlp
 docker run -it --rm --name homlp -p 8888:8888 -v "$PWD":/content ageron/handson-mlp:cpu
 ```
+
+To run the optional Box2D image, replace `ageron/handson-mlp:cpu` with `ageron/handson-mlp:cpu-box2d` in the command above.
 
 If you are using an Nvidia GPU, you must add `--gpus all` to the list of options.
 

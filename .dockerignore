@@ -1,5 +1,6 @@
 **
 !pyproject.toml
 !uv.lock
+!.python-version
 !apt.txt
 !docker/**

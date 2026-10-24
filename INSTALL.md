@@ -42,20 +42,21 @@ If you get an error when activating the virtual environment in PowerShell, you m
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
-## Step 3, if you have a GPU, upgrade the PyTorch libraries
-If you have a GPU, make sure its driver is properly installed (please see your GPU manufacter's instructions for more details).
+## Step 3, select a GPU-enabled PyTorch build if needed
+If you have an Nvidia GPU, make sure its driver is properly installed (please see your GPU manufacturer's instructions for more details). You do not need to replace PyTorch just because a GPU is present; first check whether the installed build already supports your hardware.
 
-Next, you must upgrade the PyTorch libraries for GPU support:
+To select a different CUDA build, keep the compatibility bounds from `pyproject.toml`. The command below asks uv to resolve a compatible PyTorch family before replacing the installed packages, rather than uninstalling a working environment first:
 
 ```shell
 cd
 cd handson-mlp
 source .venv/bin/activate  # on Windows, replace with same command as in step 2
-uv pip uninstall torch torchvision torchaudio
 
 # For an Nvidia CUDA 12.9 GPU (for other CUDA platforms, replace cu129 as needed)
-uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu129
+uv pip install --torch-backend cu129 --reinstall-package torch --reinstall-package torchvision --reinstall-package torchaudio "torch>=2.8.0,<3.0.0" "torchvision>=0.23.0,<0.27.0" "torchaudio>=2.8.0,<3.0.0"
 ```
+
+A later `uv sync --frozen` restores the lockfile's PyTorch builds, so reapply the CUDA selection afterward if needed.
 
 **NOTE**: If you have a MacBook with MPS support ([Metal Performance Shaders](https://developer.apple.com/documentation/metalperformanceshaders)) then you don't need to upgrade the PyTorch libraries, as the default versions support MPS out of the box.
 
