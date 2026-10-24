@@ -80,7 +80,7 @@ You can optionally install the following softwares as well:
 * [imagemagick](https://imagemagick.org/): used in the Matplotlib tutorial, if you want to export an animation as a .gif file.
 * [graphviz](https://graphviz.org/): used in Chapter 5 if you want to generate an image from a .dot file.
 
-You may also want to install the Box2D library, which is needed for a couple of exercises in Chapter 19, to load the LunarLander-v2 and BipedalWalker-v3 environments. You can generally install it by opening a terminal and running:
+You may also want to install the Box2D library, which is needed for a couple of exercises in Chapter 19, to load the LunarLander-v3 and BipedalWalker-v3 environments. You can generally install it by opening a terminal and running:
 
 ```shell
 cd
